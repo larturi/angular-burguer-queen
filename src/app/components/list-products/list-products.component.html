@@ -1,0 +1,19 @@
+<div class="row" id="products">
+    <div class="col-12">
+
+        <div class="row" *ngIf="listProducts.length === 0">
+            <div class="col-12 text-center">
+               <span>{{ 'label.no.products' | translate }}</span>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="listProducts.length > 0">
+            <div class="col-md-4 col-md-6 col-12 text-center product" *ngFor="let product of listProducts">
+               <img [src]="product.img" class="img-medium">
+               <span class="d-block">{{ product.name | translate }}</span>
+               <span class="d-block">$ {{ product.price }}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
