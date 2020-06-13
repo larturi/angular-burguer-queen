@@ -8,7 +8,10 @@
         </div>
 
         <div class="row" *ngIf="listProducts.length > 0">
-            <div class="col-md-4 col-md-6 col-12 text-center product" *ngFor="let product of listProducts">
+            <div class="col-md-4 col-md-6 col-12 text-center product"
+                 (click)="selectProduct(product)"
+                 [routerLink]="['/product']"
+                 *ngFor="let product of listProducts">
                <img [src]="product.img" class="img-medium">
                <span class="d-block">{{ product.name | translate }}</span>
                <span class="d-block">$ {{ product.price }}</span>

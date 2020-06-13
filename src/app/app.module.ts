@@ -6,6 +6,9 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 
 // Services
 import { TranslateService } from './services/translate.service';
@@ -20,6 +23,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
+import { ProductComponent } from './components/product/product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function translateFactory(provider: TranslateService) {
   return () => provider.getData();
@@ -36,13 +41,18 @@ export function productFactory(provider: ProductService) {
     HeaderComponent,
     FooterComponent,
     ListCategoriesComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     TranslateService,

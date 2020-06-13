@@ -1,0 +1,111 @@
+<div class="row" id="product-page" *ngIf="loadProduct">
+  <div class="col-12">
+
+    <div class="row">
+      <div class="col-12 product">
+         <img [src]="product.img" class="img-large">
+         <span class="d-block">{{ product.name | translate }}</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-12 text-center">
+
+        <!-- El producto tiene extras -->
+        <ng-container *ngIf="extras">
+
+          <div class="row no-gutters">
+            <div class="col-12 mb-4">
+              <h3>{{ extras.label | translate }}</h3>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4 extra border" *ngFor="let extra of extras.products">
+              <img [src]="extra.img" class="img-small">
+              <span class="d-block">{{ extra.name | translate }}</span>
+
+              <ng-container *ngIf="extra.options.length === 1">
+                <span class="d-block mb-4">{{ extra.options[0].active ? '$ ' + extra.options[0].price : '$ 0'}}</span>
+                <mat-checkbox [(ngModel)]="extra.options[0].active"></mat-checkbox>
+              </ng-container>
+
+              <ng-container *ngIf="extra.options.length > 1">
+                <span class="d-block mb-4">{{ '$ ' + extra.optionSelected.price }}</span>
+
+                <div class="block-radio m-auto">
+
+                  <mat-radio-group class="row" [(ngModel)]="extra.optionSelected">
+
+                    <mat-radio-button class="col-md-4 col-sm-12 pb-4"
+                                      *ngFor="let option of extra.options; let first=first;"
+                                      [checked]="first"
+                                      [value]="option">
+
+                                      {{ option.name | translate }}
+
+                    </mat-radio-button>
+
+                  </mat-radio-group>
+
+                </div>
+
+              </ng-container>
+            </div>
+          </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="!extras">
+
+          <div class="row">
+            <div class="col-12">
+              <span class="d-block block-price">{{ ('label.price' | translate) + ': $' + product.price}}</span>
+            </div>
+          </div>
+
+        </ng-container>
+
+        <div class="row mt-4 mb-4">
+
+          <button class="btn btn-primary btn-block mt-0 col-6"
+                  *ngIf="hasPrevious()"
+                  (click)="previous()">
+                  {{ 'label.previous' | translate }}
+          </button>
+
+          <button class="btn btn-primary btn-block mt-0 col-6"
+                  *ngIf="hasNext()"
+                  (click)="next()">
+                  {{ 'label.next' | translate }}
+          </button>
+
+          <button class="btn btn-primary btn-block mt-0"
+                  [ngClass]="{'col-12' : !extras, 'col-6' : extras}"
+                  *ngIf="!extras || extraSelected === product.extras.length -1">
+                  {{ 'label.add.product' | translate }}
+          </button>
+
+        </div>
+
+        <div class="row mt-4 mb-4">
+          <div class="col-12">
+            <button class="btn btn-primary btn-block mt-0" [routerLink]="['/list-categories']">
+                  {{ 'label.back' | translate }}
+          </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="h-100" *ngIf="!loadProduct">
+   <div class="spinner">
+     <img src="assets/img/spinner.gif">
+   </div>
+</div>

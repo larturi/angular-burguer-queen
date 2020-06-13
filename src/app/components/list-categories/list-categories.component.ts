@@ -17,7 +17,7 @@ export class ListCategoriesComponent implements OnInit {
   }
 
   selectCategory(category) {
-    this.productService.productSelected = category.products;
+    this.productService.productsSelected = category.products;
   }
 
 }

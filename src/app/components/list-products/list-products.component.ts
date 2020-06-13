@@ -17,11 +17,15 @@ export class ListProductsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.listProducts = this.productService.productSelected;
+    this.listProducts = this.productService.productsSelected;
 
     if (!this.listProducts) {
       this.router.navigate(['/list-categories']);
     }
+  }
+
+  selectProduct(product) {
+    this.productService.productSelected = product;
   }
 
 }
