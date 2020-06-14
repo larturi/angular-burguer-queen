@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProductService } from '../../services/product.service';
+import { OrderService } from '../../services/order.service';
+
 import { Product } from '../../models/product';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product',
@@ -11,6 +14,8 @@ import { Product } from '../../models/product';
 })
 export class ProductComponent implements OnInit {
 
+  @ViewChild('modal_add_product', {static: false}) modalAddProduct;
+
   product: Product = null;
   extras: any = null;
   extraSelected: number = 0;
@@ -18,7 +23,9 @@ export class ProductComponent implements OnInit {
   loadProduct = false;
 
   constructor(private productService: ProductService,
-              private router: Router) { }
+              private router: Router,
+              private orderService: OrderService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
 
@@ -30,9 +37,10 @@ export class ProductComponent implements OnInit {
       if (this.product.extras) {
         this.extras = this.product.extras[this.extraSelected];
       }
-    }
 
-    this.loadProduct = true;
+      this.loadProduct = true;
+
+    }
 
   }
 
@@ -58,6 +66,13 @@ export class ProductComponent implements OnInit {
   next() {
     this.extraSelected = this.extraSelected + 1;
     this.extras = this.product.extras[this.extraSelected];
+  }
+
+  addProductOrder() {
+    this.orderService.order.addProduct(this.product);
+    this.productService.resetProducts();
+    this.modalService.open(this.modalAddProduct);
+    this.router.navigate(['/list-categories']);
   }
 
 }

@@ -49,4 +49,8 @@ export class ProductService {
      });
   }
 
+  resetProducts() {
+    this._data = _.cloneDeep(this._dataOriginal);
+  }
+
 }

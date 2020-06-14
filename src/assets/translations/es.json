@@ -1,5 +1,5 @@
 {
-  "label.menu.grill": "Menús a la parrilla",
+  "label.menu.grill": "Hamburguesas",
   "label.big.menu.bacon": "The Queen bacon menú grande",
   "label.big.menu": "Menú gigante",
   "label.big.menu.question": "¿Hazlo gigante?",
@@ -45,8 +45,8 @@
   "label.add.product": "Añadir producto",
   "label.back": "Volver",
   "label.price": "Precio",
-  "label.succes.title": "Exito",
-  "label.succes": "Exito al añadir el producto",
+  "label.success.title": "Exito",
+  "label.success": "Exito al añadir el producto",
   "label.pay.order" :"Pagar pedido",
   "label.no.elements.order": "No hay elementos en tu pedido",
   "label.do.order": "Hacer pedido",

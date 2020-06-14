@@ -7,15 +7,21 @@
        </div>
     </div>
 
-    <div class="row" *ngIf="listCategories.length > 0">
+
+    <div class="row no-gutters" *ngIf="listCategories.length > 0">
       <div class="col-12 col-md-4 col-sm-6 category"
           (click)="selectCategory(category)"
           *ngFor="let category of listCategories"
           [routerLink]="['/list-products']">
-        <img class="img-medium" [src]="category.img">
-        <span class="d-block">{{ category.name | translate }}</span>
+            <div class="border rounded mr-1 mb-1">
+              <img class="img-medium" [src]="category.img">
+              <span class="d-block">{{ category.name | translate }}</span>
+            </div>
       </div>
-   </div>
+    </div>
+
+
+
 
   </div>
 </div>

@@ -25,6 +25,7 @@ import { ListCategoriesComponent } from './components/list-categories/list-categ
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { ProductComponent } from './components/product/product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductsOrderComponent } from './components/products-order/products-order.component';
 
 export function translateFactory(provider: TranslateService) {
   return () => provider.getData();
@@ -42,7 +43,8 @@ export function productFactory(provider: ProductService) {
     FooterComponent,
     ListCategoriesComponent,
     ListProductsComponent,
-    ProductComponent
+    ProductComponent,
+    ProductsOrderComponent
   ],
   imports: [
     BrowserModule,

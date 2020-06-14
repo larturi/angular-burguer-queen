@@ -29,14 +29,26 @@ html body {
 }
 
 .img-large {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
 }
 
 .img-small {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Estilos para los modales */
+
+.my-modal-dialog .modal-dialog{
+  max-width: 95%;
+}
+
+.my-modal-dialog .no-elements{
+  font-size: 24px;
+  color: #999;
+}
